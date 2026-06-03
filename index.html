@@ -1,15 +1,2131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxe Spa & Beauty – Nghệ Thuật Làm Đẹp Đỉnh Cao</title>
+  <meta name="description"
+    content="Khám phá khoá học làm đẹp chuyên sâu tại Luxe Spa Academy. Học từ chuyên gia, sở hữu kỹ năng đẳng cấp, mở ra cơ hội nghề nghiệp tiềm năng." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* ─── DESIGN TOKENS ─────────────────────────────────────── */
+    :root {
+      --bg-base: #0d0b12;
+      --bg-surface: #13101c;
+      --bg-card: #1a1527;
+      --bg-card2: #201b32;
+      --border: rgba(160, 100, 220, 0.18);
+      --border-glow: rgba(160, 100, 220, 0.45);
+
+      --purple-50: #f3eeff;
+      --purple-100: #e0ccff;
+      --purple-200: #c4a0ff;
+      --purple-300: #a773f8;
+      --purple-400: #8b4de8;
+      --purple-500: #7030cc;
+      --purple-600: #5a1faa;
+      --purple-glow: rgba(139, 77, 232, 0.35);
+
+      --gold: #d4a847;
+      --gold-light: #f0c96a;
+
+      --text-primary: #f0e8ff;
+      --text-secondary: #b8a8d4;
+      --text-muted: #7a6c99;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 28px;
+      --radius-xl: 48px;
+
+      --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border);
+      --shadow-glow: 0 0 60px var(--purple-glow);
+
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─── RESET & BASE ──────────────────────────────────────── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button,
+    .btn {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* ─── TYPOGRAPHY ────────────────────────────────────────── */
+    .serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--purple-300);
+      margin-bottom: 1rem;
+      padding: 0.3em 0.9em;
+      background: rgba(139, 77, 232, 0.12);
+      border: 1px solid rgba(139, 77, 232, 0.3);
+      border-radius: 999px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      color: var(--text-primary);
+    }
+
+    .section-title span {
+      color: var(--purple-300);
+      font-style: italic;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 56ch;
+      margin: 1.2rem auto 0;
+      line-height: 1.8;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    /* ─── LAYOUT ────────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    /* ─── BACKGROUND DECORATIONS ─────────────────────────────── */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orb-1 {
+      width: 500px;
+      height: 500px;
+      background: var(--purple-500);
+      top: -100px;
+      left: -150px;
+    }
+
+    .orb-2 {
+      width: 400px;
+      height: 400px;
+      background: #3a1a6e;
+      bottom: -100px;
+      right: -100px;
+    }
+
+    /* ─── NAV ───────────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 24px;
+      transition: background var(--transition), backdrop-filter var(--transition);
+    }
+
+    #navbar.scrolled {
+      background: rgba(13, 11, 18, 0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      background: linear-gradient(135deg, var(--purple-200), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--purple-200);
+    }
+
+    .nav-cta {
+      padding: 0.55em 1.5em;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--purple-400), var(--purple-600));
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 20px var(--purple-glow);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--purple-glow);
+    }
+
+    /* ─── HERO ──────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.18;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13, 11, 18, 0.97) 40%, rgba(80, 20, 160, 0.4) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-text {}
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      padding: 0.4em 1em;
+      background: rgba(212, 168, 71, 0.1);
+      border: 1px solid rgba(212, 168, 71, 0.3);
+      border-radius: 999px;
+    }
+
+    .hero-badge::before {
+      content: '✦';
+      font-size: 0.9em;
+    }
+
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5.5vw, 5.2rem);
+      font-weight: 300;
+      line-height: 1.08;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--purple-300), var(--purple-200));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 48ch;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      padding: 0.85em 2.2em;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--purple-400), var(--purple-600));
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 6px 30px var(--purple-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px var(--purple-glow);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      padding: 0.85em 2em;
+      border-radius: 999px;
+      border: 1px solid var(--border-glow);
+      color: var(--purple-200);
+      font-size: 1rem;
+      font-weight: 500;
+      background: transparent;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(139, 77, 232, 0.1);
+      border-color: var(--purple-300);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-stat {}
+
+    .hero-stat .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--purple-200), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+
+    .hero-stat .lbl {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+    }
+
+    .hero-img-main {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 540px;
+      position: relative;
+      box-shadow: var(--shadow-card), var(--shadow-glow);
+    }
+
+    .hero-img-main img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .hero-img-badge {
+      position: absolute;
+      bottom: -24px;
+      left: -24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.4rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      min-width: 210px;
+    }
+
+    .hero-img-badge .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-400), var(--purple-600));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .hero-img-badge .badge-text strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+
+    .hero-img-badge .badge-text span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ─── PROBLEM STATEMENT ─────────────────────────────────── */
+    #problem {
+      background: var(--bg-surface);
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    .problem-img {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 460px;
+      position: relative;
+    }
+
+    .problem-img img {
+      height: 100%;
+    }
+
+    .problem-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13, 11, 18, 0.6), transparent);
+    }
+
+    .pain-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .pain-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.2rem 1.4rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .pain-item:hover {
+      border-color: var(--border-glow);
+      transform: translateX(4px);
+    }
+
+    .pain-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .pain-item h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .pain-item p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ─── SOLUTION ──────────────────────────────────────────── */
+    #solution {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .solution-header {
+      margin-bottom: 64px;
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .solution-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .solution-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-glow);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px var(--purple-glow);
+    }
+
+    .solution-card-img {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .solution-card-img img {
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .solution-card:hover .solution-card-img img {
+      transform: scale(1.05);
+    }
+
+    .solution-card-body {
+      padding: 1.6rem;
+    }
+
+    .solution-card-body .tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--purple-300);
+      margin-bottom: 0.6rem;
+    }
+
+    .solution-card-body h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .solution-card-body p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ─── BENEFITS ──────────────────────────────────────────── */
+    #benefits {
+      background: var(--bg-surface);
+    }
+
+    .benefits-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    .benefits-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .benefit-row {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .benefit-row.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .benefit-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: rgba(139, 77, 232, 0.25);
+      line-height: 1;
+      min-width: 56px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .benefit-info h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .benefit-info p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .benefits-visual {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 520px;
+    }
+
+    .benefits-visual img {
+      height: 100%;
+      width: 100%;
+    }
+
+    .benefits-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(80, 20, 160, 0.3), transparent);
+    }
+
+    /* ─── COURSE CONTENT ────────────────────────────────────── */
+    #course {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .course-header {
+      margin-bottom: 60px;
+    }
+
+    .course-modules {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .module-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.8rem;
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      transition: border-color var(--transition), transform var(--transition);
+      cursor: pointer;
+    }
+
+    .module-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-4px);
+    }
+
+    .module-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, rgba(139, 77, 232, 0.3), rgba(90, 31, 170, 0.4));
+      border: 1px solid rgba(139, 77, 232, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .module-body {}
+
+    .module-body .step {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--purple-300);
+      margin-bottom: 0.4rem;
+    }
+
+    .module-body h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .module-body p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .module-body .lessons {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.7rem;
+    }
+
+    .module-body .lessons span {
+      color: var(--purple-300);
+      font-weight: 600;
+    }
+
+    /* ─── SOCIAL PROOF ──────────────────────────────────────── */
+    #social-proof {
+      background: var(--bg-surface);
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.8rem;
+      text-align: center;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .stat-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-4px);
+    }
+
+    .stat-card .big-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--purple-200), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+
+    .stat-card .big-lbl {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-6px);
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+    }
+
+    .testimonial-card blockquote {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-style: italic;
+      flex: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .testimonial-author img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .author-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .author-role {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ─── PRICING ───────────────────────────────────────────── */
+    #pricing {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-header {
+      margin-bottom: 60px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .price-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.4rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .price-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .price-card.featured {
+      background: linear-gradient(135deg, rgba(139, 77, 232, 0.2), rgba(90, 31, 170, 0.15));
+      border-color: var(--purple-400);
+      box-shadow: 0 0 60px rgba(139, 77, 232, 0.2), var(--shadow-card);
+      transform: scale(1.04);
+    }
+
+    .price-card.featured:hover {
+      transform: scale(1.04) translateY(-6px);
+    }
+
+    .plan-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(135deg, var(--purple-400), var(--purple-600));
+      border-radius: 999px;
+      padding: 0.3em 0.9em;
+      margin-bottom: 1.2rem;
+    }
+
+    .plan-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.8rem;
+    }
+
+    .plan-price {
+      margin-bottom: 1.8rem;
+    }
+
+    .plan-price .amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .plan-price .currency {
+      font-size: 1.4rem;
+      vertical-align: top;
+      margin-top: 0.3rem;
+      display: inline-block;
+      color: var(--text-secondary);
+    }
+
+    .plan-price .period {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .plan-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    .plan-features li::before {
+      content: '✓';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(139, 77, 232, 0.2);
+      color: var(--purple-300);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .plan-features li.disabled {
+      opacity: 0.4;
+    }
+
+    .plan-features li.disabled::before {
+      content: '✕';
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+    }
+
+    .btn-plan {
+      display: block;
+      width: 100%;
+      padding: 0.9em;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-plan.outline {
+      border: 1px solid var(--border-glow);
+      color: var(--purple-200);
+      background: transparent;
+    }
+
+    .btn-plan.outline:hover {
+      background: rgba(139, 77, 232, 0.1);
+    }
+
+    .btn-plan.solid {
+      background: linear-gradient(135deg, var(--purple-400), var(--purple-600));
+      color: #fff;
+      box-shadow: 0 6px 28px var(--purple-glow);
+    }
+
+    .btn-plan.solid:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px var(--purple-glow);
+    }
+
+    /* ─── CTA ───────────────────────────────────────────────── */
+    #cta {
+      background: var(--bg-surface);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-title em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--purple-200), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cta-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-note {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 1.5rem;
+    }
+
+    /* ─── FAQ ───────────────────────────────────────────────── */
+    #faq {
+      position: relative;
+    }
+
+    .faq-header {
+      margin-bottom: 60px;
+    }
+
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+
+    .faq-item.open {
+      border-color: var(--border-glow);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.3rem 1.6rem;
+      background: transparent;
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-weight: 500;
+      text-align: left;
+      gap: 1rem;
+    }
+
+    .faq-question:hover {
+      color: var(--purple-200);
+    }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--border-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--purple-300);
+      flex-shrink: 0;
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: rgba(139, 77, 232, 0.2);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 1.6rem 1.4rem;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────────── */
+    #footer {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border);
+      padding: 64px 0 32px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--purple-200), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 30ch;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+    }
+
+    .social-btn:hover {
+      border-color: var(--border-glow);
+      color: var(--purple-300);
+      background: rgba(139, 77, 232, 0.1);
+    }
+
+    .footer-col h5 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--purple-300);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      transition: color var(--transition);
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--purple-200);
+    }
+
+    .footer-bottom {
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom a {
+      color: var(--purple-300);
+    }
+
+    /* ─── SCROLL REVEAL ─────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-image-wrap {
+        display: none;
+      }
+
+      .problem-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .problem-img {
+        display: none;
+      }
+
+      .benefits-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .benefits-visual {
+        height: 320px;
+      }
+
+      .solution-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .course-modules {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card.featured {
+        transform: none;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      section {
+        padding: 72px 0;
+      }
+
+      .solution-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─── PROGRESS BAR ──────────────────────────────────────── */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--purple-400), var(--gold));
+      z-index: 2000;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Welcome to My Landing Page</h1>
-  <p>Address: 123 Main Street, Anytown, USA</p>
+
+  <!-- Progress Bar -->
+  <div id="progress-bar" aria-hidden="true"></div>
+
+  <!-- ══════════════════ NAV ══════════════════ -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Luxe Spa ✦</a>
+      <ul class="nav-links" role="list">
+        <li><a href="#problem">Vấn đề</a></li>
+        <li><a href="#solution">Giải pháp</a></li>
+        <li><a href="#course">Chương trình</a></li>
+        <li><a href="#pricing">Học phí</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="#cta" class="nav-cta">Đăng ký ngay</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════ 1. HERO ══════════════════ -->
+  <section id="hero" aria-labelledby="hero-heading">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1600&auto=format&fit=crop&q=80"
+        alt="Spa background" loading="eager" />
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge">Học viện làm đẹp đẳng cấp</span>
+          <h1 class="hero-h1" id="hero-heading">
+            Nghệ thuật<br />làm đẹp<br /><em>đỉnh cao</em>
+          </h1>
+          <p class="hero-p">Khoá học chuyên sâu về chăm sóc da, spa trị liệu và kỹ thuật thẩm mỹ hiện đại — được thiết kế bởi
+            các chuyên gia hàng đầu trong ngành làm đẹp Việt Nam.</p>
+          <div class="hero-actions">
+            <a href="#cta" class="btn-primary" id="hero-cta-btn">✦ Bắt đầu hành trình</a>
+            <a href="#course" class="btn-ghost" id="hero-course-btn">Xem chương trình →</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="num">2,800+</div>
+              <div class="lbl">Học viên tốt nghiệp</div>
+            </div>
+            <div class="hero-stat">
+              <div class="num">98%</div>
+              <div class="lbl">Tỷ lệ hài lòng</div>
+            </div>
+            <div class="hero-stat">
+              <div class="num">12+</div>
+              <div class="lbl">Năm kinh nghiệm</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <div class="hero-img-main">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&auto=format&fit=crop&q=80"
+              alt="Chăm sóc da mặt tại spa" loading="eager" />
+          </div>
+          <div class="hero-img-badge">
+            <div class="icon">🌸</div>
+            <div class="badge-text">
+              <strong>Chứng chỉ quốc tế</strong>
+              <span>Được công nhận toàn cầu</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ 2. PROBLEM ══════════════════ -->
+  <section id="problem" aria-labelledby="problem-heading">
+    <div class="container">
+      <div class="problem-grid">
+        <div class="problem-img reveal">
+          <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?w=700&auto=format&fit=crop&q=80"
+            alt="Người lo lắng về làn da" loading="lazy" />
+        </div>
+        <div class="problem-text">
+          <span class="section-label">Vấn đề hiện tại</span>
+          <h2 class="section-title serif reveal" id="problem-heading">
+            Bạn đang gặp phải<br /><span>những rào cản này?</span>
+          </h2>
+          <p class="section-desc" style="text-align:left; margin-left:0;" class="reveal">Ngành làm đẹp đang phát triển bùng nổ,
+            nhưng không phải ai cũng có cơ hội được đào tạo bài bản.</p>
+          <ul class="pain-list" style="margin-top:1.5rem;">
+            <li class="pain-item reveal reveal-delay-1">
+              <span class="pain-icon">😟</span>
+              <div>
+                <h4>Thiếu kiến thức chuyên môn bài bản</h4>
+                <p>Tự học qua mạng nhưng không có hệ thống, kiến thức rời rạc, dễ sai kỹ thuật và gây hại cho khách hàng.</p>
+              </div>
+            </li>
+            <li class="pain-item reveal reveal-delay-2">
+              <span class="pain-icon">💸</span>
+              <div>
+                <h4>Chi phí đào tạo quá cao, không hiệu quả</h4>
+                <p>Các trường nghề truyền thống tốn kém nhưng chương trình lỗi thời, không theo kịp xu hướng thị trường.</p>
+              </div>
+            </li>
+            <li class="pain-item reveal reveal-delay-3">
+              <span class="pain-icon">⏱️</span>
+              <div>
+                <h4>Không có thời gian học tập trung dài hạn</h4>
+                <p>Bận rộn công việc, gia đình — không thể sắp xếp để tham gia các khoá học cố định theo lịch cứng nhắc.</p>
+              </div>
+            </li>
+            <li class="pain-item reveal">
+              <span class="pain-icon">🚫</span>
+              <div>
+                <h4>Thiếu mạng lưới và cơ hội kết nối ngành</h4>
+                <p>Sau khi học xong không biết bắt đầu từ đâu, không có mentor hỗ trợ, không có cộng đồng đồng hành.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ 3. SOLUTION ══════════════════ -->
+  <section id="solution" aria-labelledby="solution-heading">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="solution-header text-center">
+        <span class="section-label reveal">Giải pháp của chúng tôi</span>
+        <h2 class="section-title serif reveal" id="solution-heading">
+          Khoá học <span>toàn diện</span><br />dành riêng cho bạn
+        </h2>
+        <p class="section-desc reveal">Ba chương trình học được thiết kế cho mọi trình độ — từ người mới bắt đầu đến chuyên gia
+          muốn nâng cao kỹ năng.</p>
+      </div>
+      <div class="solution-grid">
+        <div class="solution-card reveal reveal-delay-1">
+          <div class="solution-card-img">
+            <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600&auto=format&fit=crop&q=80"
+              alt="Chăm sóc da cơ bản" loading="lazy" />
+          </div>
+          <div class="solution-card-body">
+            <div class="tag">Cơ bản</div>
+            <h3>Chăm Sóc Da Mặt Chuyên Nghiệp</h3>
+            <p>Nắm vững kỹ thuật làm sạch, tẩy tế bào chết, đắp mặt nạ và dưỡng ẩm theo từng loại da — nền tảng của mọi liệu
+              trình spa.</p>
+          </div>
+        </div>
+        <div class="solution-card reveal reveal-delay-2">
+          <div class="solution-card-img">
+            <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&auto=format&fit=crop&q=80"
+              alt="Massage và trị liệu" loading="lazy" />
+          </div>
+          <div class="solution-card-body">
+            <div class="tag">Nâng cao</div>
+            <h3>Massage & Spa Trị Liệu</h3>
+            <p>Thành thạo các kỹ thuật massage Thụy Điển, đá nóng, aromatherapy — tạo trải nghiệm thư giãn toàn diện cho khách
+              hàng.</p>
+          </div>
+        </div>
+        <div class="solution-card reveal reveal-delay-3">
+          <div class="solution-card-img">
+            <img src="https://images.unsplash.com/photo-1487412947147-5cebf100d7fb?w=600&auto=format&fit=crop&q=80"
+              alt="Thẩm mỹ chuyên sâu" loading="lazy" />
+          </div>
+          <div class="solution-card-body">
+            <div class="tag">Chuyên gia</div>
+            <h3>Thẩm Mỹ & Kinh Doanh Spa</h3>
+            <p>Từ kỹ thuật thẩm mỹ tiên tiến đến quản lý spa, xây dựng thương hiệu cá nhân và mở rộng kinh doanh trong ngành làm
+              đẹp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ 4. BENEFITS ══════════════════ -->
+  <section id="benefits" aria-labelledby="benefits-heading">
+    <div class="container">
+      <div class="benefits-wrapper">
+        <div>
+          <span class="section-label reveal">Lợi ích dành cho bạn</span>
+          <h2 class="section-title serif reveal" id="benefits-heading">
+            Những gì bạn<br />sẽ <span>đạt được</span>
+          </h2>
+          <ul class="benefits-list" style="margin-top:2rem;">
+            <li class="benefit-row">
+              <div class="benefit-num">01</div>
+              <div class="benefit-info">
+                <h4>Kỹ năng thực chiến từ ngày đầu tiên</h4>
+                <p>Học qua thực hành 70% thời gian, ngay lập tức áp dụng được vào công việc thực tế tại spa hoặc tự kinh doanh.
+                </p>
+              </div>
+            </li>
+            <li class="benefit-row">
+              <div class="benefit-num">02</div>
+              <div class="benefit-info">
+                <h4>Chứng chỉ được công nhận toàn cầu</h4>
+                <p>Bằng chứng nhận từ Hiệp hội Spa Quốc tế (ISPA) — tấm giấy thông hành mở cửa tại mọi cơ sở làm đẹp uy tín.</p>
+              </div>
+            </li>
+            <li class="benefit-row">
+              <div class="benefit-num">03</div>
+              <div class="benefit-info">
+                <h4>Mentor 1-1 cùng chuyên gia đầu ngành</h4>
+                <p>Mỗi học viên có một mentor riêng — người đồng hành, giải đáp thắc mắc và hỗ trợ suốt hành trình học tập.</p>
+              </div>
+            </li>
+            <li class="benefit-row">
+              <div class="benefit-num">04</div>
+              <div class="benefit-info">
+                <h4>Cộng đồng kết nối & cơ hội việc làm</h4>
+                <p>Tham gia cộng đồng 2,800+ học viên và đối tác tuyển dụng — cơ hội việc làm được kết nối ngay sau tốt nghiệp.
+                </p>
+              </div>
+            </li>
+            <li class="benefit-row">
+              <div class="benefit-num">05</div>
+              <div class="benefit-info">
+                <h4>Học linh hoạt theo lịch của bạn</h4>
+                <p>Video on-demand, lịch học buổi sáng/tối linh hoạt, học từ xa hoặc trực tiếp tại cơ sở TP.HCM và Hà Nội.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="benefits-visual reveal">
+          <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=700&auto=format&fit=crop&q=80"
+            alt="Học viên thực hành tại spa" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ 5. COURSE CONTENT ══════════════════ -->
+  <section id="course" aria-labelledby="course-heading">
+    <div class="orb orb-2" style="top:20%;right:-100px;bottom:auto;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="course-header text-center">
+        <span class="section-label reveal">Chương trình học</span>
+        <h2 class="section-title serif reveal" id="course-heading">
+          Lộ trình <span>8 module</span><br />được thiết kế khoa học
+        </h2>
+        <p class="section-desc reveal">Mỗi module là một bước tiến vững chắc, xây dựng kỹ năng từ nền tảng đến chuyên sâu theo
+          chuẩn quốc tế.</p>
+      </div>
+      <div class="course-modules">
+        <div class="module-card reveal reveal-delay-1">
+          <div class="module-icon">🌿</div>
+          <div class="module-body">
+            <div class="step">Module 01</div>
+            <h3>Nền tảng da học & phân loại da</h3>
+            <p>Hiểu cấu trúc da, các loại da cơ bản, nguyên nhân các vấn đề da phổ biến và phương pháp phân tích da khách hàng.
+            </p>
+            <div class="lessons"><span>12 bài học</span> · 6 giờ học · Thực hành phân tích da</div>
+          </div>
+        </div>
+        <div class="module-card reveal reveal-delay-2">
+          <div class="module-icon">💧</div>
+          <div class="module-body">
+            <div class="step">Module 02</div>
+            <h3>Kỹ thuật làm sạch & tẩy tế bào chết</h3>
+            <p>Quy trình double-cleansing, các phương pháp exfoliation cơ học và hoá học, áp dụng phù hợp từng loại da.</p>
+            <div class="lessons"><span>10 bài học</span> · 8 giờ học · Thực hành trực tiếp</div>
+          </div>
+        </div>
+        <div class="module-card reveal reveal-delay-1">
+          <div class="module-icon">✨</div>
+          <div class="module-body">
+            <div class="step">Module 03</div>
+            <h3>Liệu trình dưỡng da & mặt nạ chuyên sâu</h3>
+            <p>Serum, ampoule, sheet mask, clay mask — lựa chọn và ứng dụng đúng cách để tối ưu hiệu quả điều trị da.</p>
+            <div class="lessons"><span>14 bài học</span> · 10 giờ học · Thực hành liệu trình</div>
+          </div>
+        </div>
+        <div class="module-card reveal reveal-delay-2">
+          <div class="module-icon">🙌</div>
+          <div class="module-body">
+            <div class="step">Module 04</div>
+            <h3>Kỹ thuật massage mặt & nâng cơ</h3>
+            <p>Facial massage Kobido, kỹ thuật lymph drainage, gua sha và face rolling — bí quyết trẻ hoá không cần dao kéo.</p>
+            <div class="lessons"><span>16 bài học</span> · 12 giờ học · Thực hành massage</div>
+          </div>
+        </div>
+        <div class="module-card reveal reveal-delay-1">
+          <div class="module-icon">💆</div>
+          <div class="module-body">
+            <div class="step">Module 05</div>
+            <h3>Massage body & spa trị liệu</h3>
+            <p>Swedish massage, deep tissue, hot stone therapy, aromatherapy — xây dựng phác đồ trị liệu toàn thân cho khách
+              hàng.</p>
+            <div class="lessons"><span>18 bài học</span> · 16 giờ học · Thực hành 40 ca</div>
+          </div>
+        </div>
+        <div class="module-card reveal reveal-delay-2">
+          <div class="module-icon">🔬</div>
+          <div class="module-body">
+            <div class="step">Module 06</div>
+            <h3>Công nghệ thẩm mỹ hiện đại</h3>
+            <p>RF, ultrasound, microcurrent, LED therapy — vận hành thiết bị công nghệ cao trong điều trị da chuyên nghiệp.</p>
+            <div class="lessons"><span>12 bài học</span> · 14 giờ học · Thực hành máy móc</div>
+          </div>
+        </div>
+        <div class="module-card reveal reveal-delay-1">
+          <div class="module-icon">🌺</div>
+          <div class="module-body">
+            <div class="step">Module 07</div>
+            <h3>Liệu pháp thảo dược & tự nhiên</h3>
+            <p>Herbal therapy, tắm muối, đắp bùn khoáng, aromatherapy — kết hợp thiên nhiên và khoa học trong liệu trình spa.
+            </p>
+            <div class="lessons"><span>10 bài học</span> · 8 giờ học · Pha chế thảo dược</div>
+          </div>
+        </div>
+        <div class="module-card reveal reveal-delay-2">
+          <div class="module-icon">📊</div>
+          <div class="module-body">
+            <div class="step">Module 08</div>
+            <h3>Kinh doanh & quản lý spa</h3>
+            <p>Xây dựng thương hiệu, định giá dịch vụ, marketing digital, quản lý nhân sự và tài chính cho spa của bạn.</p>
+            <div class="lessons"><span>14 bài học</span> · 10 giờ học · Dự án kinh doanh</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ 6. SOCIAL PROOF ══════════════════ -->
+  <section id="social-proof" aria-labelledby="social-heading">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:60px;">
+        <span class="section-label reveal">Bằng chứng thực tế</span>
+        <h2 class="section-title serif reveal" id="social-heading">
+          Hàng nghìn học viên đã<br /><span>thay đổi cuộc đời</span>
+        </h2>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card reveal reveal-delay-1">
+          <div class="big-num">2,800+</div>
+          <div class="big-lbl">Học viên tốt nghiệp</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <div class="big-num">98%</div>
+          <div class="big-lbl">Tỷ lệ hài lòng</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+          <div class="big-num">450+</div>
+          <div class="big-lbl">Đối tác tuyển dụng</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="big-num">12+</div>
+          <div class="big-lbl">Năm kinh nghiệm</div>
+        </div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Sau 3 tháng học tại Luxe Spa Academy, tôi đã mở được salon riêng và có hơn 50 khách hàng thân thiết. Kiến
+            thức thực chiến ở đây hoàn toàn khác với những gì tôi học trước đây."</blockquote>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=100&h=100&auto=format&fit=crop&q=80"
+              alt="Nguyễn Thị Lan" loading="lazy" />
+            <div>
+              <div class="author-name">Nguyễn Thị Lan</div>
+              <div class="author-role">Chủ Salon Lan Beauty, TP.HCM</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Tôi đặc biệt ấn tượng với phần mentor 1-1. Chuyên gia luôn sẵn sàng giải đáp và đưa ra phản hồi chi tiết.
+            Đây là khoản đầu tư tốt nhất tôi từng bỏ ra cho sự nghiệp của mình."</blockquote>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop&q=80"
+              alt="Trần Minh Châu" loading="lazy" />
+            <div>
+              <div class="author-name">Trần Minh Châu</div>
+              <div class="author-role">Kỹ thuật viên Spa tại Revive Wellness</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-3">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Chương trình linh hoạt giúp tôi vừa học vừa làm full-time. Chứng chỉ ISPA từ Luxe Academy được các spa 5
+            sao công nhận, tôi đã được tuyển vào Intercontinental ngay sau tốt nghiệp!"</blockquote>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&h=100&auto=format&fit=crop&q=80"
+              alt="Phạm Thảo Nguyên" loading="lazy" />
+            <div>
+              <div class="author-name">Phạm Thảo Nguyên</div>
+              <div class="author-role">Senior Therapist, Intercontinental HN</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ 7. PRICING ══════════════════ -->
+  <section id="pricing" aria-labelledby="pricing-heading">
+    <div class="orb orb-1" style="left:50%;transform:translateX(-50%);top:-50px;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="pricing-header text-center">
+        <span class="section-label reveal">Học phí</span>
+        <h2 class="section-title serif reveal" id="pricing-heading">
+          Chọn gói học<br /><span>phù hợp với bạn</span>
+        </h2>
+        <p class="section-desc reveal">Đầu tư một lần, nhận lại giá trị trọn đời. Tất cả gói đều có bảo đảm hoàn tiền trong 14
+          ngày.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card reveal reveal-delay-1">
+          <div class="plan-badge" style="background:rgba(255,255,255,0.1);color:var(--text-secondary);">Starter</div>
+          <div class="plan-name">Cơ Bản</div>
+          <div class="plan-desc">Dành cho người mới bắt đầu muốn khám phá ngành spa.</div>
+          <div class="plan-price">
+            <span class="currency">₫</span>
+            <span class="amount">3,9M</span>
+            <div class="period">/ khoá học · trọn đời</div>
+          </div>
+          <ul class="plan-features">
+            <li>4 module đầu tiên</li>
+            <li>Video bài giảng HD</li>
+            <li>Tài liệu học tập PDF</li>
+            <li>Cộng đồng học viên</li>
+            <li class="disabled">Mentor 1-1</li>
+            <li class="disabled">Chứng chỉ ISPA</li>
+            <li class="disabled">Hỗ trợ việc làm</li>
+          </ul>
+          <button class="btn-plan outline" id="price-basic-btn">Đăng ký Cơ Bản</button>
+        </div>
+        <div class="price-card featured reveal reveal-delay-2">
+          <div class="plan-badge">⭐ Phổ biến nhất</div>
+          <div class="plan-name">Chuyên Nghiệp</div>
+          <div class="plan-desc">Gói đầy đủ nhất — được 85% học viên lựa chọn.</div>
+          <div class="plan-price">
+            <span class="currency">₫</span>
+            <span class="amount">7,9M</span>
+            <div class="period">/ khoá học · trọn đời</div>
+          </div>
+          <ul class="plan-features">
+            <li>Đầy đủ 8 module</li>
+            <li>Video bài giảng 4K</li>
+            <li>Tài liệu + công thức độc quyền</li>
+            <li>Cộng đồng VIP</li>
+            <li>4 buổi Mentor 1-1</li>
+            <li>Chứng chỉ ISPA quốc tế</li>
+            <li>Kết nối đối tác tuyển dụng</li>
+          </ul>
+          <button class="btn-plan solid" id="price-pro-btn">Đăng ký Chuyên Nghiệp</button>
+        </div>
+        <div class="price-card reveal reveal-delay-3">
+          <div class="plan-badge" style="background:linear-gradient(135deg,var(--gold),#c8922a);color:#fff;">✦ Elite</div>
+          <div class="plan-name">Doanh Nghiệp</div>
+          <div class="plan-desc">Dành cho spa, thẩm mỹ viện muốn đào tạo đội ngũ.</div>
+          <div class="plan-price">
+            <span class="currency">₫</span>
+            <span class="amount">19,9M</span>
+            <div class="period">/ nhóm 5 người · trọn đời</div>
+          </div>
+          <ul class="plan-features">
+            <li>Đầy đủ 8 module cho 5 người</li>
+            <li>Nội dung tuỳ chỉnh theo spa</li>
+            <li>Đào tạo tại cơ sở của bạn</li>
+            <li>Cộng đồng VIP cho đội nhóm</li>
+            <li>Mentor không giới hạn buổi</li>
+            <li>Chứng chỉ ISPA x5</li>
+            <li>Account manager riêng</li>
+          </ul>
+          <button class="btn-plan outline" id="price-enterprise-btn">Liên hệ tư vấn</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ 8. CTA ══════════════════ -->
+  <section id="cta" aria-labelledby="cta-heading" style="background:var(--bg-surface);overflow:hidden;position:relative;">
+    <div class="orb"
+      style="width:600px;height:600px;background:var(--purple-500);top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.15;filter:blur(120px);">
+    </div>
+    <div class="container">
+      <div class="cta-inner" style="position:relative;z-index:1;">
+        <span class="section-label reveal">Bắt đầu ngay hôm nay</span>
+        <h2 class="cta-title reveal" id="cta-heading">
+          Hành trình làm đẹp<br /><em>đẳng cấp bắt đầu từ đây</em>
+        </h2>
+        <p class="cta-desc reveal">Đừng để cơ hội vụt qua. Hơn 2,800 học viên đã thay đổi sự nghiệp của mình — và bạn có thể là
+          người tiếp theo.</p>
+        <div class="cta-actions reveal">
+          <a href="#pricing" class="btn-primary" id="cta-primary-btn" style="font-size:1.05rem;padding:1em 2.5em;">✦ Đăng ký
+            khoá học ngay</a>
+          <a href="tel:+84900000000" class="btn-ghost" id="cta-call-btn" style="font-size:1.05rem;padding:1em 2em;">📞 Tư vấn
+            miễn phí</a>
+        </div>
+        <p class="cta-note reveal">Bảo đảm hoàn tiền 100% trong 14 ngày nếu không hài lòng · Không cần kinh nghiệm trước đó</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ 9. FAQ ══════════════════ -->
+  <section id="faq" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="faq-header text-center">
+        <span class="section-label reveal">Câu hỏi thường gặp</span>
+        <h2 class="section-title serif reveal" id="faq-heading">
+          Bạn còn thắc mắc <span>điều gì?</span>
+        </h2>
+      </div>
+      <div class="faq-list" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" id="faq-q1" aria-controls="faq-a1">
+            Tôi không có kinh nghiệm làm đẹp, có học được không?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
+            <div class="faq-answer-inner">Hoàn toàn có thể! Chương trình của chúng tôi được thiết kế cho người bắt đầu từ con số
+              0. Module 1 sẽ xây dựng nền tảng kiến thức từ những khái niệm cơ bản nhất. Chúng tôi có hàng trăm học viên không
+              có bất kỳ kinh nghiệm nào trước đó và đã thành công rực rỡ sau khoá học.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" id="faq-q2" aria-controls="faq-a2">
+            Thời gian học kéo dài bao lâu?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
+            <div class="faq-answer-inner">Chương trình đầy đủ gồm 8 module với tổng 84+ giờ học. Nếu học theo lịch thông thường
+              (2 buổi/tuần), bạn có thể hoàn thành trong 3–4 tháng. Với video on-demand, bạn hoàn toàn chủ động học nhanh hơn
+              hoặc chậm hơn theo tốc độ của mình — không có deadline.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" id="faq-q3" aria-controls="faq-a3">
+            Chứng chỉ có được công nhận không?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
+            <div class="faq-answer-inner">Chứng chỉ của Luxe Spa Academy được cấp bởi Hiệp hội Spa Quốc tế (ISPA) — tổ chức uy
+              tín hàng đầu thế giới trong ngành spa. Chứng chỉ này được công nhận tại hơn 80 quốc gia và được chấp nhận bởi các
+              chuỗi spa 5 sao quốc tế như Six Senses, Aman, Intercontinental và nhiều thương hiệu lớn khác.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" id="faq-q4" aria-controls="faq-a4">
+            Tôi có thể học online hoàn toàn không?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
+            <div class="faq-answer-inner">Phần lý thuyết (khoảng 30%) hoàn toàn có thể học online qua video và tài liệu. Tuy
+              nhiên, phần thực hành (70%) yêu cầu học trực tiếp tại cơ sở của chúng tôi ở TP.HCM hoặc Hà Nội. Chúng tôi cũng có
+              các buổi workshop cuối tuần và lớp thực hành tập trung 5 ngày để phù hợp với học viên ở tỉnh xa.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" id="faq-q5" aria-controls="faq-a5">
+            Chính sách hoàn tiền như thế nào?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5">
+            <div class="faq-answer-inner">Chúng tôi cam kết hoàn tiền 100% trong vòng 14 ngày đầu nếu bạn không hài lòng với
+              chất lượng — không hỏi lý do. Chỉ cần gửi email yêu cầu, chúng tôi sẽ xử lý trong 3–5 ngày làm việc. Đây là cam
+              kết của chúng tôi với chất lượng đào tạo.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" id="faq-q6" aria-controls="faq-a6">
+            Sau khoá học tôi có được hỗ trợ tìm việc không?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-a6" role="region" aria-labelledby="faq-q6">
+            <div class="faq-answer-inner">Với gói Chuyên Nghiệp và Doanh Nghiệp, chúng tôi có chương trình kết nối việc làm với
+              hơn 450 đối tác tuyển dụng bao gồm các spa 5 sao, thẩm mỹ viện cao cấp và resort tại Việt Nam. Tỷ lệ học viên có
+              việc làm sau 3 tháng tốt nghiệp đạt 87%.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ 10. FOOTER ══════════════════ -->
+  <footer id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">Luxe Spa ✦</div>
+          <p>Học viện đào tạo làm đẹp chuyên nghiệp hàng đầu Việt Nam. Chúng tôi tin rằng mỗi người đều xứng đáng được toả sáng
+            với phiên bản tốt nhất của mình.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="Facebook">f</a>
+            <a href="#" class="social-btn" aria-label="Instagram">in</a>
+            <a href="#" class="social-btn" aria-label="YouTube">▶</a>
+            <a href="#" class="social-btn" aria-label="TikTok">♪</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Khoá học</h5>
+          <ul>
+            <li><a href="#solution">Chăm sóc da mặt</a></li>
+            <li><a href="#solution">Massage & Spa</a></li>
+            <li><a href="#solution">Thẩm mỹ công nghệ</a></li>
+            <li><a href="#solution">Kinh doanh Spa</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Học viện</h5>
+          <ul>
+            <li><a href="#">Về chúng tôi</a></li>
+            <li><a href="#social-proof">Học viên tiêu biểu</a></li>
+            <li><a href="#">Giảng viên</a></li>
+            <li><a href="#">Cơ sở vật chất</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Hỗ trợ</h5>
+          <ul>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#">Điều khoản dịch vụ</a></li>
+            <li><a href="#">Chính sách bảo mật</a></li>
+            <li><a href="tel:+84900000000">Hotline: 0900.000.000</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Luxe Spa Academy. Tất cả quyền được bảo lưu.</p>
+        <p>Thiết kế với ❤️ bởi <a href="#">Luxe Creative Studio</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════ SCRIPTS ══════════════════ -->
+  <script>
+    // ── Scroll progress bar ──────────────────────────────
+    const progressBar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (scrolled / total * 100) + '%';
+    }, { passive: true });
+
+    // ── Navbar scroll effect ─────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ── Scroll reveal (IntersectionObserver) ────────────
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // ── Benefit row stagger reveal ───────────────────────
+    const benefitRows = document.querySelectorAll('.benefit-row');
+    const bObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 120);
+          bObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    benefitRows.forEach(el => bObserver.observe(el));
+
+    // ── FAQ accordion ────────────────────────────────────
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        // Toggle clicked
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // ── Smooth number counter animation ──────────────────
+    function animateCount(el, target, suffix, duration) {
+      let start = null;
+      const num = parseFloat(target);
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = (num * ease).toFixed(target.includes('.') ? 1 : 0);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+
+    const statCards = document.querySelectorAll('.stat-card');
+    const cObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const numEl = e.target.querySelector('.big-num');
+          const rawText = numEl.textContent.trim();
+          const match = rawText.match(/^([\d.]+)(.*)$/);
+          if (match) animateCount(numEl, match[1], match[2], 1800);
+          cObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    statCards.forEach(c => cObserver.observe(c));
+
+    // ── Hero stat counters ───────────────────────────────
+    const heroStats = document.querySelectorAll('.hero-stat .num');
+    const hObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const rawText = e.target.textContent.trim();
+          const match = rawText.match(/^([\d,]+)(.*)$/);
+          if (match) {
+            const num = match[1].replace(',', '');
+            const suffix = match[2];
+            let start = null;
+            const duration = 1500;
+            const target = parseFloat(num);
+            const step = (ts) => {
+              if (!start) start = ts;
+              const progress = Math.min((ts - start) / duration, 1);
+              const ease = 1 - Math.pow(1 - progress, 3);
+              const val = Math.round(target * ease);
+              e.target.textContent = (val >= 1000 ? val.toLocaleString() : val) + suffix;
+              if (progress < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+          }
+          hObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    heroStats.forEach(el => hObserver.observe(el));
+  </script>
 </body>
 
 </html>
